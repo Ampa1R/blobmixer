@@ -1,0 +1,58 @@
+@import '../../css/styles/shared-imports.scss';
+
+.position {
+  position: absolute;
+  top: $padding;
+  left: 50%;
+  pointer-events: auto;
+  transform: translateX(-50%);
+
+  text-align: center;
+  letter-spacing: -0.03em;
+}
+
+.button {
+  appearance: none;
+  border: none;
+  padding: 6px 15px;
+  height: 37px;
+  font-style: normal;
+  font-weight: normal;
+  font-family: 'Aften Screen', sans-serif;
+  font-size: 14px;
+
+  background: #ffffff;
+  border-radius: 50px;
+  color: #000000;
+  outline: none;
+
+  &:hover {
+    background: #000;
+    color: #fff;
+  }
+  cursor: pointer;
+}
+
+.notSupported {
+  display: flex;
+  align-items: center;
+  & svg {
+    display: block;
+    margin-top: -2px;
+  }
+  @media (orientation: portrait) {
+    display: none;
+  }
+  & .hmd {
+    transition: all 0.3s ease-out;
+    fill: transparent;
+  }
+  &:hover .hmd {
+    fill: rgba(255, 255, 255, 0.8);
+  }
+}
+.notSupportedLink {
+  color: #fff;
+  margin-right: 6px;
+  font-size: pxrem(18);
+}

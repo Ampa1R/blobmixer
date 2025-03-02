@@ -1,0 +1,48 @@
+{
+  "name": "vite-react-typescript-starter",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@juggle/resize-observer": "^3.4.0",
+    "@rainbow-me/rainbowkit": "^2.2.4",
+    "@react-spring/web": "^9.7.5",
+    "@react-three/drei": "^9.122.0",
+    "@react-three/fiber": "^8.18.0",
+    "@react-three/postprocessing": "^2.19.1",
+    "@react-three/xr": "^6.6.8",
+    "classnames": "^2.5.1",
+    "copy-to-clipboard": "^3.3.3",
+    "d3-ease": "^3.0.1",
+    "postprocessing": "^6.36.7",
+    "query-string": "^9.1.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-merge-refs": "^2.1.1",
+    "react-router-dom": "^7.2.0",
+    "react-three-gui": "^0.4.2",
+    "three": "^0.173.0",
+    "wagmi": "^2.14.12",
+    "wasm-feature-detect": "^1.8.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.21.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^15.15.0",
+    "sass-embedded": "^1.85.1",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.24.1",
+    "vite": "^6.2.0"
+  }
+}

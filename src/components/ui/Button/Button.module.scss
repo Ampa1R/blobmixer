@@ -1,0 +1,47 @@
+@import '../../../css/styles/shared-imports.scss';
+
+.button {
+  appearance: none;
+  border-radius: pxrem(50);
+  border: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-family: 'Aften Screen', sans-serif;
+  font-size: pxrem(18);
+  font-style: normal;
+  letter-spacing: -0.03em;
+  line-height: 177%;
+  outline: none;
+  padding: pxrem(9) pxrem(24);
+  text-align: center;
+  transition: background-color 0.2s ease-out, color 0.2s ease-out;
+  white-space: nowrap;
+
+  & + .button {
+    margin-left: pxrem(15);
+  }
+
+  &:disabled {
+    cursor: unset;
+    background-color: var(--color-light-gray);
+    color: var(--color-gray);
+  }
+
+  @include above('desktop') {
+    &:hover:not(:disabled) {
+      background-color: var(--color-dark-gray);
+      color: var(--color-white);
+    }
+    padding: pxrem(9) pxrem(40);
+  }
+}
+
+.primary {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.secondary {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}

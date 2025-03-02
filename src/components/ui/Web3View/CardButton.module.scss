@@ -1,0 +1,11 @@
+@import '../../../css/styles/shared-imports.scss';
+
+.buttonCta {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  & > * {
+    margin: 0 pxrem(4.6);
+  }
+}

@@ -1,0 +1,67 @@
+@import '../../../css/styles/shared-imports.scss';
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes grow {
+  from {
+    stroke-dasharray: 0 100;
+  }
+  to {
+    stroke-dasharray: 100 0;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.container {
+  animation: fadeIn 0.3s 1 ease-out backwards;
+  min-height: 100%;
+  min-width: 100%;
+  position: relative;
+}
+
+.progressContainer {
+  height: 117vmin;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 117vmin;
+
+  @include above('desktop') {
+    height: 85vmin;
+    width: 85vmin;
+  }
+}
+
+.progressCircle {
+  animation: grow 0.5s 1 ease-out 0.3s backwards;
+}
+
+.progressCircleOutAnimation {
+  animation: blink 1.5s 1 linear backwards;
+  opacity: 0;
+}

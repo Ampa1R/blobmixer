@@ -1,0 +1,85 @@
+@import '../../../css/styles/shared-imports.scss';
+
+@keyframes animationDot1 {
+  0% {
+    opacity: 0;
+    transform: translateY(0.3em);
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  95% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+}
+
+@keyframes animationDot2 {
+  0% {
+    opacity: 0;
+    transform: translateY(0.3em);
+  }
+  25% {
+    opacity: 0;
+    transform: translateY(0.3em);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  95% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+}
+
+@keyframes animationDot3 {
+  0% {
+    opacity: 0;
+    transform: translateY(0.3em);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(0.3em);
+  }
+  75% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  95% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+}
+
+.dot {
+  animation: 2.5s var(--ease-back-out) 0.5s infinite;
+  display: inline-block;
+  font-size: 2em;
+  opacity: 0;
+
+  &:nth-child(1) {
+    animation-name: animationDot1;
+  }
+
+  &:nth-child(2) {
+    animation-name: animationDot2;
+  }
+
+  &:nth-child(3) {
+    animation-name: animationDot3;
+  }
+}

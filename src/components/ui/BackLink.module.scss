@@ -1,0 +1,68 @@
+@import '../../css/styles/shared-imports.scss';
+
+.wrapper {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+
+  top: $padding;
+  left: $padding;
+  right: auto;
+  position: relative;
+  color: #fff;
+
+  &.isGallery {
+    pointer-events: none;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      & :global(.underlink)::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+h1.title {
+  font-size: pxrem(18);
+  font-weight: normal;
+  margin: 0;
+
+  transform: translateX(0);
+  transition: transform 0.3s var(--ease-circ-out);
+  .isGallery & {
+    pointer-events: none;
+    transform: translateX(-42px);
+  }
+}
+
+.icon {
+  display: block;
+  margin-right: 14px;
+  margin-top: -1px;
+  width: 27px;
+  transform: scale(0.8);
+  transition: transform 0.3s var(--ease-circ-out);
+  
+  @include above("medium") {
+    transform: scale(1);
+  }
+  .isGallery & {
+    transform: scale(0);
+  }
+}
+
+.lblGallery {
+  display: inline-block;
+  .isGallery & {
+    display: none;
+  }
+}
+
+.lblMixer {
+  display: none;
+  .isGallery & {
+    display: inline-block;
+  }
+}

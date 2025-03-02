@@ -1,0 +1,109 @@
+$padding: 4.5vh;
+
+
+$html-font-size: 16px;
+@function stripUnit($value) {
+    @return $value / ($value * 0 + 1);
+}
+@function pxrem($pxValue) {
+    @return #{stripUnit($pxValue) / stripUnit($html-font-size)}rem;
+}
+
+$breakpoints: (
+  'medium': '500px',
+  'tablet': '700px',
+  'desktop': '1000px',
+  'large': '1400px',
+  'xlarge': '2400px',
+);
+
+@mixin max-prop($cssProperty, $min-value, $max-value) {
+  #{$cssProperty}: $max-value; //fallback (MS Edge 18 and below)
+  #{$cssProperty}: unquote('max(#{$min-value},  #{$max-value})');
+}
+
+/*
+* Breakpoint wider than breakpoint (INCLUSIVE)
+*
+* @example
+* @include above('desktop') { color: hotpink; }
+*
+*/
+@mixin above($breakpoint) {
+  @media (min-width: map-get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+/*
+* Breakpoint more narrow than breakpoint (EXCLUSIVE)
+*
+* @example
+* @include under('desktop') { color: hotpink; }
+*
+*/
+@mixin under($breakpoint) {
+  @media (max-width: map-get($breakpoints, $breakpoint) - 1px) {
+    @content;
+  }
+}
+
+/*
+* Breakpoint for pointer-enabled device
+*/
+@mixin isHoverable {
+  @media (any-hover: hover) {
+    @content;
+  }
+}
+
+/*
+* Breakpoint for touch-enabled device
+*/
+@mixin isTouchable {
+  @media (hover: none) and (pointer: coarse) {
+    @content;
+  }
+}
+
+/*
+* Breakpoint for portrait orientation
+*/
+@mixin isPortrait() {
+  @media (orientation: portrait) {
+    @content;
+  }
+}
+
+/*
+* Breakpoint for landscape orientation
+*/
+@mixin isLandscape() {
+  @media (orientation: landscape) {
+    @content;
+  }
+}
+
+/*
+* Breakpoint for minimum viewport aspect ratio
+* Note: $aspect needs to be passed as string:
+*   - `@include isMinAspect(${4/3}) { ... }`
+*   - `@include isMinAspect('4/3') { ... }`
+*/
+@mixin isMinAspect($aspect) {
+  @media (min-aspect-ratio: $aspect) {
+    @content;
+  }
+}
+
+/*
+* Breakpoint for maximum viewport aspect ratio
+* Note: $aspect needs to be passed as string:
+*   - `@include isMaxAspect(${4/3}) { ... }`
+*   - `@include isMaxAspect('4/3') { ... }`
+*/
+@mixin isMaxAspect($aspect) {
+  @media (max-aspect-ratio: $aspect) {
+    @content;
+  }
+}

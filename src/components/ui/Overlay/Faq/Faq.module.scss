@@ -1,0 +1,31 @@
+@import '../../../../css/styles/shared-imports.scss';
+
+.link {
+  white-space: nowrap;
+}
+
+.content {
+  overflow: auto;
+  padding-top: 7vh;
+}
+
+.mediumBody {
+  margin: pxrem(30) 0 0;
+  font-size: pxrem(24);
+  line-height: 1.5;
+
+  @include above('desktop') {
+    letter-spacing: -0.03em;
+  }
+}
+
+.smallBody {
+  font-size: pxrem(16);
+  line-height: 1.4;
+  opacity: 0.7;
+
+  @include above('desktop') {
+    @include max-prop(font-size, pxrem(14), vw(14));
+    line-height: 1.5;
+  }
+}

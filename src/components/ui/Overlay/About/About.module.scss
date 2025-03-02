@@ -1,0 +1,55 @@
+@import '../../../../css/styles/shared-imports.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+  padding-bottom: 17vh;
+  padding-top: 20vh;
+
+  @include above('desktop') {
+    display: unset;
+    margin: auto;
+    padding: 0 7vw 5vh 7vw;
+  }
+}
+
+.link {
+  white-space: nowrap;
+}
+
+.mediumBody {
+  margin: 0;
+  display: inline;
+
+  @include above('desktop') {
+    display: block;
+    @include max-prop(margin-bottom, pxrem(25), vw(25));
+
+    &:first-of-type {
+      @include max-prop(margin-bottom, pxrem(40), vw(40));
+    }
+  }
+}
+
+.details {
+  font-size: pxrem(13);
+  line-height: 1.7;
+  opacity: 0.6;
+  letter-spacing: normal;
+
+  @include above('desktop') {
+    font-size: Min(3vw, 14px);
+    line-height: 1.5;
+  }
+}
+
+.licence {
+  vertical-align: text-top;
+  display: block;
+  margin-top: 1rem;
+  @include above('desktop') {
+    display: inline;
+  }
+}

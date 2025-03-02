@@ -1,0 +1,18 @@
+$padding: 4.5vh;
+
+
+$html-font-size: 16px;
+@function stripUnit($value) {
+    @return $value / ($value * 0 + 1);
+}
+@function pxrem($pxValue) {
+    @return #{stripUnit($pxValue) / stripUnit($html-font-size)}rem;
+}
+
+$breakpoints: (
+  'medium': '500px',
+  'tablet': '700px',
+  'desktop': '1000px',
+  'large': '1400px',
+  'xlarge': '2400px',
+);

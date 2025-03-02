@@ -1,0 +1,103 @@
+@import '../../../css/styles/shared-imports.scss';
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInOutTransition {
+  0% {
+    opacity: 0;
+  }
+  1.5%,
+  98.5% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.minting {
+  animation: fadeIn 0.3s 1 ease-out backwards 0.5s;
+  bottom: 2.5vh;
+  color: var(--color-white);
+  display: inline-block;
+  font-size: pxrem(12);
+  left: 50%;
+  line-height: 1.5;
+  position: fixed;
+  text-align: center;
+  transform: translateX(-50%);
+  width: 100%;
+
+  &.fadeOut {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  &.fadeInOut {
+    animation: fadeInOutTransition 10s infinite;
+  }
+
+  @include above('desktop') {
+    bottom: 4.5vh;
+    font-size: pxrem(14);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 7vh);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate(-50%, -10px);
+  }
+
+  80% {
+    transform: translate(-50%, 3px);
+  }
+  100% {
+    transform: translate(-50%, 0);
+  }
+}
+
+.error {
+  align-items: center;
+  animation: bounce 850ms var(--ease-back-out);
+  background-color: var(--color-white);
+  border-radius: pxrem(8);
+  bottom: 2.5vh;
+  color: var(--color-black);
+  display: flex;
+  gap: pxrem(9);
+  justify-content: center;
+  padding: pxrem(5.5) pxrem(8);
+  width: unset;
+
+  @include above('desktop') {
+    bottom: 4.5vh;
+    padding: pxrem(9) pxrem(16);
+  }
+}
+
+.icon {
+  height: pxrem(14);
+  width: pxrem(14);
+
+  @include above('desktop') {
+    height: pxrem(18);
+    width: pxrem(18);
+  }
+}
+
+.text {
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

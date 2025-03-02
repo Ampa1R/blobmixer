@@ -1,0 +1,523 @@
+@import '../../../css/styles/shared-imports.scss';
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+.container {
+  animation: fadeIn 0.3s 1 ease-out backwards;
+  background: #222222;
+  height: 100vh;
+  position: relative;
+  width: 100%;
+
+  &.successfulMint {
+    background: transparent;
+    transition: all 0.6s 2.1s;
+  }
+}
+
+.backLinkContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: z('above');
+}
+
+.stage {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  padding: pxrem(80) pxrem(30) pxrem(50);
+  pointer-events: auto;
+  touch-action: pan-y;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  &.above {
+    pointer-events: none;
+    z-index: z('above');
+  }
+
+  @include above('desktop') {
+    // @include min-prop(padding-bottom, vw(60), 12vh);
+    // @include min-prop(padding-top, vw(100), 12vh);
+    align-items: center;
+    height: 100vh;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0;
+  }
+
+  &.perspective {
+    perspective: 100rem;
+
+    @include above('desktop') {
+      perspective: 100vw;
+    }
+  }
+
+  &.ovHidden {
+    overflow: hidden;
+  }
+}
+
+/* =========== Card =============  **/
+
+@keyframes floating {
+  0% {
+    transform: rotateY(0deg);
+  }
+  25% {
+    transform: rotateY(-30deg);
+  }
+  50% {
+    transform: rotateY(0deg);
+  }
+  75% {
+    transform: rotateY(30deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes successfulMintAnimation {
+  0% {
+    transform: translateX(0%);
+  }
+  15% {
+    transform: translateX(-10%) rotate(-5deg);
+  }
+  30% {
+    transform: translateX(8%) rotate(3deg);
+  }
+  45% {
+    transform: translateX(-6%) rotate(-3deg);
+  }
+  60% {
+    transform: translateX(5%) rotate(2deg);
+  }
+  75% {
+    transform: translateX(-2%) rotate(-1deg);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.cardWrapper {
+  cursor: grab;
+  display: flex;
+  flex: 1;
+  height: 100%;
+  max-width: pxrem(319);
+  perspective: 100rem;
+  position: relative;
+  transform-style: preserve-3d;
+  width: 100%;
+
+  @include above('desktop') {
+    flex: auto;
+    height: unset;
+    margin-bottom: pxrem(15);
+    max-width: pxrem(366);
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  .isDonationInformationOpen & {
+    cursor: auto;
+  }
+
+  &.isFloating {
+    animation: floating 8s linear 0.8s infinite;
+  }
+
+  &.successfulMint {
+    animation: successfulMintAnimation 1.5s ease;
+    opacity: 0;
+    transition: opacity 0.5s 1.5s ease;
+    cursor: auto;
+  }
+}
+
+.frontCard,
+.backCard {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  border-radius: pxrem(8);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  overflow: hidden;
+  padding: pxrem(4.5) 0;
+  transform: translateY(-50%);
+  user-select: none;
+
+  @include above('desktop') {
+    top: 0;
+  }
+}
+
+.backCard {
+  transform: rotateY(180deg) translateY(-50%);
+}
+
+.card {
+  background: var(--color-white);
+  border-radius: pxrem(8);
+  color: var(--color-grape);
+  max-width: 100%;
+  padding: pxrem(16) pxrem(16) pxrem(28);
+  text-align: center;
+
+  @include above('desktop') {
+    padding: pxrem(16) pxrem(16) pxrem(34);
+    margin-top: 0;
+  }
+}
+
+.cardBlob {
+  aspect-ratio: 1;
+  max-width: 100%;
+  background-color: var(--background-color);
+  border-radius: 5.50445px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.cardContent {
+  color: var(--color-black);
+  margin: pxrem(15) auto 0;
+  max-width: 95%;
+
+  @include above('desktop') {
+    margin: pxrem(22) auto 0;
+  }
+}
+
+.cardTitle,
+.cardDescription {
+  letter-spacing: -0.03em;
+}
+
+.cardTitle {
+  font-size: pxrem(28);
+  line-height: 1.2;
+  margin: 0;
+
+  @include above('desktop') {
+    font-size: pxrem(38);
+    line-height: 1.2;
+  }
+}
+
+.cardDescription {
+  font-size: pxrem(18);
+  line-height: 1.3;
+  margin: pxrem(10) auto 0;
+  width: 100%;
+
+  @include above('desktop') {
+    margin: pxrem(24) auto 0;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+  }
+}
+
+.cardDonateInfo {
+  color: #8c8c8c;
+  font-size: pxrem(12);
+  line-height: 1.3;
+  margin: pxrem(4) 0 pxrem(25);
+
+  @include above('desktop') {
+    line-height: 1.5;
+    font-size: pxrem(14);
+  }
+}
+
+.cryptocoinIcon {
+  display: inline-block;
+  transform: translateY(0.2em) scale(0.9);
+}
+
+.donationInfoButton {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  padding: 0;
+  text-decoration: underline;
+
+  &:not(.disabled) {
+    cursor: pointer;
+  }
+}
+
+.metadata {
+  background: var(--color-white);
+  border-radius: pxrem(8);
+  color: var(--color-grape);
+  width: 100%;
+  max-width: 100%;
+  padding: pxrem(24);
+  text-align: center;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+
+  @include above('medium') {
+    padding: pxrem(32);
+  }
+
+  @include above('desktop') {
+    margin-top: 0;
+  }
+}
+.metadataContent {
+  max-width: 95%;
+  row-gap: pxrem(18);
+  column-gap: pxrem(8);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  @include above('medium') {
+    row-gap: pxrem(25);
+  }
+}
+
+.dataWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.dataLabel {
+  font-size: pxrem(12);
+  line-height: 177%;
+  color: var(--color-grape);
+  opacity: 0.7;
+  letter-spacing: -0.02em;
+  color: #000000;
+  opacity: 0.7;
+  text-transform: uppercase;
+  margin-bottom: pxrem(0.4);
+  display: inline-block;
+}
+
+.dataValue {
+  text-align: center;
+  padding: pxrem(6) pxrem(18);
+  color: rgba(0, 0, 0, 0.75);
+  border-radius: pxrem(7);
+  line-height: 177%;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  letter-spacing: -0.02em;
+  text-transform: capitalize;
+}
+
+.videoLoop {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100%;
+  min-width: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+}
+
+.donationInformation {
+  box-sizing: border-box;
+  color: var(--color-white);
+  left: 0;
+  padding: 0 pxrem(32);
+  position: absolute;
+  top: pxrem(100);
+  width: 100%;
+  z-index: z('above');
+  pointer-events: none;
+
+  @include above('desktop') {
+    @include max-prop(min-height, pxrem(625), vw(525));
+    align-items: center;
+    display: flex;
+    height: 100%;
+    left: 46%;
+    opacity: 0;
+    padding: 0;
+    top: 0;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.donationInformationContent {
+  width: 100%;
+
+  &.open {
+    pointer-events: all;
+  }
+
+  @include above('desktop') {
+    @include max-prop(max-width, vw(366), pxrem(366));
+    margin-left: vw(120);
+  }
+}
+
+.donationInformationSubtitle {
+  @include max-prop(font-size, pxrem(12), vw(14));
+  @include max-prop(margin-bottom, pxrem(15), vw(22));
+
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+
+  @include above('desktop') {
+    text-align: left;
+  }
+}
+
+.donationInformationTitle {
+  @include max-prop(font-size, pxrem(24), vw(32));
+  letter-spacing: -0.03em;
+  line-height: 1.5;
+  margin-bottom: pxrem(17);
+
+  @include above('desktop') {
+    margin-bottom: pxrem(30);
+    text-align: left;
+  }
+}
+
+.donationInformationText {
+  color: rgba($color: #fff, $alpha: 0.7);
+  font-size: pxrem(16);
+  line-height: 1.4;
+
+  &:not(:last-child) {
+    @include max-prop(margin-bottom, pxrem(37), vw(37));
+  }
+
+  @include above('desktop') {
+    font-size: pxrem(14);
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+  }
+}
+
+.celebrationText {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 2s ease;
+  opacity: 0.95; /* show hint of blob behind */
+
+  &::before {
+    background-color: rgba(0, 0, 0, 0);
+    content: '';
+    height: 100vh;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+  }
+
+  &.fadeBg {
+    background-color: var(--background-color, #000);
+
+    &::before {
+      transition: background-color 2s ease;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+.celebrationMessageWrapper {
+  position: relative;
+  text-align: center;
+  transition: opacity 2s ease-out;
+  width: 85%;
+
+  @include above('desktop') {
+    width: 65%;
+  }
+
+  span {
+    display: inline-block;
+  }
+}
+
+.celebrationMessage {
+  font-size: pxrem(40);
+  letter-spacing: -0.06em;
+  line-height: 1.2;
+  margin: 0;
+
+  @include above('desktop') {
+    font-size: pxrem(72);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin: 0 auto;
+    max-width: pxrem(1000);
+  }
+}
+
+.openSeaMessage {
+  animation: fadeIn 0.3s 1 ease-out backwards 1.5s;
+  font-size: pxrem(16);
+  left: 50%;
+  line-height: 1.4;
+  margin: pxrem(32) 0 0;
+  position: absolute;
+  top: 100%;
+  transform: translateX(-50%);
+  width: 100%;
+
+  @include above('tablet') {
+    font-size: pxrem(18);
+    letter-spacing: -0.03em;
+    line-height: 1.77;
+    margin: pxrem(26) 0 0;
+  }
+}
+
+.word-wrapper {
+  white-space: nowrap;
+}
+
+.hide {
+  opacity: 0;
+  pointer-events: none;
+}

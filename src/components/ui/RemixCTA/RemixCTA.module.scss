@@ -1,0 +1,68 @@
+@import '../../../css/styles/shared-imports.scss';
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+.link {
+  animation: fadeIn 1s 1 ease-out backwards 0s;
+  display: inline-block;
+  pointer-events: auto;
+
+  & svg {
+    display: block;
+  }
+
+  position: relative;
+}
+.link:after {
+  content: unset;
+}
+
+.magnet {
+  position: relative;
+}
+
+.ring {
+  width: 16vh;
+  height: auto;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+}
+
+.hoverTarget {
+  padding: 10vh;
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  @media (orientation: portrait) {
+    top: 80%;
+  }
+}
+
+.right {
+  @media (orientation: landscape) {
+    padding: 20vh;
+    left: auto;
+    top: auto;
+    right: -40vh;
+    bottom: -42vh;
+  }
+}

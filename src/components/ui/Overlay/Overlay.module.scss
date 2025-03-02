@@ -1,0 +1,62 @@
+@import '../../../css/styles/shared-imports.scss';
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+.overlay {
+  animation: fadeIn 0.3s ease-out;
+  bottom: 0;
+  color: #fff;
+  display: flex;
+  font-size: pxrem(18);
+  left: 0;
+  line-height: 1.3;
+  pointer-events: auto;
+  position: fixed;
+  right: 0;
+  text-align: left;
+  top: 0;
+  z-index: z('above');
+
+  @include above('desktop') {
+    line-height: 1.5;
+    @include max-prop(font-size, pxrem(24), vw(24));
+  }
+}
+
+.web3 {
+  background-color: rgba(0, 0, 0, 0.92);
+}
+
+.grid {
+  margin: auto;
+  @include max-prop(max-width, pxrem(600), vw(600));
+  padding: 0 7vw 5vh 7vw;
+}
+
+@keyframes showX {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+.btnClose {
+  animation: showX 0.3s ease-in-out;
+  cursor: pointer;
+  margin-top: -3px;
+  pointer-events: auto;
+  position: absolute;
+  right: 7vw;
+  top: $padding;
+  transform: scale(1.01);
+
+  @include above('desktop') {
+    padding: 0 0.8rem;
+    position: fixed;
+    right: $padding;
+  }
+}
