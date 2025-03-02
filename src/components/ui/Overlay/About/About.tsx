@@ -25,6 +25,10 @@ const AboutOverlay = () => {
       innerClassName={s.container}
     >
       <div>
+        <p className={s.header}>
+          This website is a copy of <Link href="https://blobmixer.14islands.com/">Blobmixer</Link>. You can find source code at <Link href="https://github.com/Ampa1R/blobmixer">GitHub</Link>.
+          <br />
+        </p>
         <p className={s.mediumBody}>
           The Blobmixer is a toy for creating 3D art; own it as a video, view it
           in VR, or share it with friends. In total, 1414 pieces will be minted
